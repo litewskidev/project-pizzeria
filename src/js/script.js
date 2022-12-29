@@ -89,6 +89,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
     initAccordion(){
@@ -110,9 +111,25 @@
     }
 
     initOrderForm(){
-      //const thisProduct = this;
+      const thisProduct = this;
 
       console.log(this.initOrderForm);
+
+      thisProduct.form.addEventListener('submit', function(event){
+        event.preventDefault();
+        thisProduct.processOrder();
+      });
+
+      for(let input of thisProduct.formInputs){
+        input.addEventListener('change', function(){
+          thisProduct.processOrder();
+        });
+      }
+
+      thisProduct.cartButton.addEventListener('click', function(event){
+        event.preventDefault();
+        thisProduct.processOrder();
+      });
     }
 
     processOrder(){
@@ -135,42 +152,37 @@
         for(let optionId in param.options) {
           /* [DONE] determine option value */
           const option = param.options[optionId];
-          console.log(optionId, option);
+          /* [DONE] determine optionSelect value */
+          const optionSelect = formData[paramId] && formData[paramId].includes(optionId);
 
-          /* [DONE] check if there is param with a name of paramId in formData and if it includes optionId */
-          if(formData[paramId] && formData[paramId].includes(optionId)) {
+          /* [DONE] check if there is param with a name of paramId in formData and if it includes optionId (WITH optionSelect) */
+          if(optionSelect) {
             /* [DONE] check if the option is not default */
             if(!option.default) {
               /* [DONE] add option price to price variable */
               price += option.price;
             }
-          } else {
             /* [DONE] check if the option is default */
-            if(option.default) {
+            else if(option.default) {
               /* [DONE] reduce price variable */
               price -= option.price;
             }
           }
+          /* [DONE] find img witch '.paramId-optionId' class */
+          const image = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+          /* [DONE] check if img is founded */
+          if (image) {
+            /* [DONE] check if option is selected & show or hide img */
+            if (optionSelect) {
+              image.classList.add(classNames.menuProduct.imageVisible);
+            } else {
+              image.classList.remove(classNames.menuProduct.imageVisible);
+            }
+          }
+          /* [DONE] update calculated price in the HTML */
+          thisProduct.priceElem.innerHTML = price;
         }
       }
-      /* [DONE] update calculated price in the HTML */
-      thisProduct.priceElem.innerHTML = price;
-
-      thisProduct.form.addEventListener('submit', function(event){
-        event.preventDefault();
-        thisProduct.processOrder();
-      });
-
-      for(let input of thisProduct.formInputs){
-        input.addEventListener('change', function(){
-          thisProduct.processOrder();
-        });
-      }
-
-      thisProduct.cartButton.addEventListener('click', function(event){
-        event.preventDefault();
-        thisProduct.processOrder();
-      });
     }
   }
 
