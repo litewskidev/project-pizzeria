@@ -70,17 +70,17 @@
 
       /* [DONE] generate HTML based on template */
       const generatedHTML = templates.menuProduct(thisProduct.data);
-      /* create element using utils.createElementFromHTML */
+      /* [DONE] create element using utils.createElementFromHTML */
       thisProduct.element = utils.createDOMFromHTML(generatedHTML);
-      /* find menu container */
+      /* [DONE] find menu container */
       const menuContainer = document.querySelector(select.containerOf.menu);
-      /* add element to menu */
+      /* [DONE] add element to menu */
       menuContainer.appendChild(thisProduct.element);
     }
 
     initAccordion(){
       const thisProduct = this;
-
+      
       /* [DONE] find the clickable trigger (the element that should react to clicking) */
       const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
 
