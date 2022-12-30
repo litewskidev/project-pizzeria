@@ -44,7 +44,7 @@
     amountWidget: {
       defaultValue: 1,
       defaultMin: 1,
-      defaultMax: 9,
+      defaultMax: 10,
     }
   };
 
@@ -221,7 +221,7 @@
       const newValue = parseInt(value);
 
       /* [DONE] add validation */
-      if(thisWidget.value !== newValue && !isNaN(newValue)){
+      if((thisWidget.value !== newValue && !isNaN(newValue)), (value >= settings.amountWidget.defaultMin && value <= settings.amountWidget.defaultMax)){
         thisWidget.value = newValue;
       }
 
