@@ -164,11 +164,11 @@
               /* [DONE] add option price to price variable */
               price += option.price;
             }
-            /* [DONE] check if the option is default */
-            else if(option.default) {
-              /* [DONE] reduce price variable */
-              price -= option.price;
-            }
+          }
+          /* [DONE] check if the option is default */
+          else if(option.default) {
+            /* [DONE] reduce price variable */
+            price -= option.price;
           }
           /* [DONE] find img witch '.paramId-optionId' class */
           const image = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
@@ -181,12 +181,12 @@
               image.classList.remove(classNames.menuProduct.imageVisible);
             }
           }
-          /* multiply price by amount */
-          price *= thisProduct.amountWidget.value;
-          /* [DONE] update calculated price in the HTML */
-          thisProduct.priceElem.innerHTML = price;
         }
       }
+      /* multiply price by amount */
+      price *= thisProduct.amountWidget.value;
+      /* [DONE] update calculated price in the HTML */
+      thisProduct.priceElem.innerHTML = price;
     }
 
     initAmountWidget(){
