@@ -181,6 +181,8 @@
               image.classList.remove(classNames.menuProduct.imageVisible);
             }
           }
+          /* multiply price by amount */
+          price *= thisProduct.amountWidget.value;
           /* [DONE] update calculated price in the HTML */
           thisProduct.priceElem.innerHTML = price;
         }
@@ -191,6 +193,10 @@
       const thisProduct = this;
 
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+
+      thisProduct.amountWidgetElem.addEventListener('updated', function(){
+        thisProduct.processOrder();
+      });
     }
   }
 
@@ -202,8 +208,8 @@
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
 
-      console.log('AmountWidget:', thisWidget);
-      console.log('constructor arguments:', element);
+      //console.log('AmountWidget:', thisWidget);
+      //console.log('constructor arguments:', element);
     }
 
     getElements(element){
@@ -221,9 +227,12 @@
       const newValue = parseInt(value);
 
       /* [DONE] add validation */
-      if((thisWidget.value !== newValue && !isNaN(newValue)), (value >= settings.amountWidget.defaultMin && value <= settings.amountWidget.defaultMax)){
-        thisWidget.value = newValue;
-      }
+      if(thisWidget.value !== newValue && !isNaN(newValue)) {
+        if (value >= settings.amountWidget.defaultMin && value <= settings.amountWidget.defaultMax) {
+          thisWidget.value = newValue;
+        }}
+
+      thisWidget.announce();
 
       thisWidget.input.value = thisWidget.value;
     }
@@ -244,6 +253,13 @@
         event.preventDefault();
         thisWidget.setValue(thisWidget.value + 1);
       });
+    }
+
+    announce(){
+      const thisWidget = this;
+
+      const event = new Event ('updated');
+      thisWidget.element.dispatchEvent(event);
     }
   }
 
