@@ -193,7 +193,6 @@
           const option = param.options[optionId];
           /* [DONE] determine optionSelect value */
           const optionSelect = formData[paramId] && formData[paramId].includes(optionId);
-
           /* [DONE] check if there is param with a name of paramId in formData and if it includes optionId (WITH optionSelect) */
           if(optionSelect) {
             /* [DONE] check if the option is not default */
@@ -238,6 +237,41 @@
       });
     }
 
+    prepareCartProductParams(){
+      const thisProduct = this;
+
+      /* [DONE] covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']} */
+      const formData = utils.serializeFormToObject(thisProduct.dom.form);
+
+      const params = {};
+
+      /* [DONE] for every category (param)... */
+      for(let paramId in thisProduct.data.params) {
+        /* [DONE] determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... } */
+        const param = thisProduct.data.params[paramId];
+        /* [DONE] create category param in params const eg. params = { ingredients: { name: 'Ingredients', options: {}}}  */
+        params[paramId] = {
+          label: param.label,
+          options: {}
+        };
+
+        /* [DONE] for every option in this category */
+        for(let optionId in param.options) {
+          /* [DONE] determine option value */
+          const option = param.options[optionId];
+          /* [DONE] determine optionSelect value */
+          const optionSelect = formData[paramId] && formData[paramId].includes(optionId);
+          /* [DONE] check if there is param with a name of paramId in formData and if it includes optionId (WITH optionSelect) */
+          if(optionSelect) {
+            /* [DONE] option is selected! */
+            params[paramId].options[optionId] = option.label;
+          }
+        }
+      }
+
+      return params;
+    }
+
     prepareCartProduct(){
       const thisProduct = this;
 
@@ -247,7 +281,7 @@
         amount: thisProduct.amountWidget.value,
         priceSingle: thisProduct.priceSingle,
         price: thisProduct.priceSingle * thisProduct.amountWidget.value,
-        params: {},
+        params: thisProduct.prepareCartProductParams(),
       };
       return productSummary;
     }
