@@ -27,12 +27,12 @@
     },
     widgets: {
       amount: {
-        input: 'input.amount', // CODE CHANGED
+        input: 'input.amount',
         linkDecrease: 'a[href="#less"]',
         linkIncrease: 'a[href="#more"]',
       },
     },
-    // CODE ADDED START
+
     cart: {
       productList: '.cart__order-summary',
       toggleTrigger: '.cart__summary',
@@ -51,7 +51,6 @@
       edit: '[href="#edit"]',
       remove: '[href="#remove"]',
     },
-    // CODE ADDED END
   };
 
   const classNames = {
@@ -59,11 +58,10 @@
       wrapperActive: 'active',
       imageVisible: 'active',
     },
-    // CODE ADDED START
+
     cart: {
       wrapperActive: 'active',
     },
-    // CODE ADDED END
   };
 
   const settings = {
@@ -86,9 +84,7 @@
 
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
-    // CODE ADDED START
     cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
-    // CODE ADDED END
   };
 
   class Product{
@@ -104,8 +100,6 @@
       thisProduct.initOrderForm();
       thisProduct.initAmountWidget();
       thisProduct.processOrder();
-
-      //console.log('new Product:', thisProduct);
     }
 
     renderInMenu(){
@@ -156,8 +150,6 @@
     initOrderForm(){
       const thisProduct = this;
 
-      //console.log(this.initOrderForm);
-
       thisProduct.dom.form.addEventListener('submit', function(event){
         event.preventDefault();
         thisProduct.processOrder();
@@ -181,7 +173,6 @@
 
       /* [DONE] covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']} */
       const formData = utils.serializeFormToObject(thisProduct.dom.form);
-      //console.log('formData', formData);
 
       /* [DONE] set price to default price */
       let price = thisProduct.data.price;
@@ -190,7 +181,6 @@
       for(let paramId in thisProduct.data.params) {
         /* [DONE] determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... } */
         const param = thisProduct.data.params[paramId];
-        //console.log(paramId, param);
 
         /* [DONE] for every option in this category */
         for(let optionId in param.options) {
@@ -305,9 +295,6 @@
       thisWidget.getElements(element);
       thisWidget.setValue(thisWidget.input.value || settings.amountWidget.defaultValue);
       thisWidget.initActions();
-
-      //console.log('AmountWidget:', thisWidget);
-      //console.log('constructor arguments:', element);
     }
 
     getElements(element){
@@ -371,8 +358,6 @@
 
       thisCart.getElements(element);
       thisCart.initActions();
-
-      //console.log('new Cart', thisCart);
     }
 
     getElements(element){
@@ -423,9 +408,6 @@
       thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
 
       thisCart.update();
-
-      //console.log('menuProduct', menuProduct);
-      //console.log('thisCart.products', thisCart.products);
     }
 
     update(){
@@ -513,7 +495,6 @@
       thisCartProduct.getElements(element);
       thisCartProduct.initAmountWidget();
       thisCartProduct.initActions();
-      //console.log('CartProduct', thisCartProduct);
     }
 
     getElements(element){
@@ -585,8 +566,6 @@
     initMenu: function(){
       const thisApp = this;
 
-      //console.log('thisApp.data', thisApp.data);
-
       for(let productData in thisApp.data.products){
         new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
       }
@@ -603,15 +582,11 @@
           return rawResponse.json();
         })
         .then(function(parsedResponse){
-          console.log('parsedResponse', parsedResponse);
-
-          /* save parsedResponse as thisApp.data.products */
+          /* [DONE] save parsedResponse as thisApp.data.products */
           thisApp.data.products = parsedResponse;
-          /* execute initMenu method */
+          /* [DONE] execute initMenu method */
           thisApp.initMenu();
         });
-
-      console.log('thisApp.data', JSON.stringify(thisApp.data));
     },
 
     initCart: function(){
@@ -623,11 +598,6 @@
 
     init: function(){
       const thisApp = this;
-      /*console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates);*/
 
       thisApp.initData();
       thisApp.initCart();
