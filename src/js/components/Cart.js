@@ -3,7 +3,7 @@ import utils from '../utils.js';
 import CartProduct from './CartProduct.js';
 
 class Cart {
-  constructor(element){
+  constructor(element) {
     const thisCart = this;
 
     thisCart.products = [];
@@ -12,7 +12,7 @@ class Cart {
     thisCart.initActions();
   }
 
-  getElements(element){
+  getElements(element) {
     const thisCart = this;
 
     thisCart.dom = {};
@@ -29,7 +29,7 @@ class Cart {
     thisCart.dom.phone = element.querySelector(select.cart.phone);
   }
 
-  initActions(){
+  initActions() {
     const thisCart = this;
 
     thisCart.dom.toggleTrigger.addEventListener('click', function() {
@@ -50,7 +50,7 @@ class Cart {
     });
   }
 
-  add(menuProduct){
+  add(menuProduct) {
     const thisCart = this;
 
     const generatedHTML = templates.cartProduct(menuProduct);
@@ -62,7 +62,7 @@ class Cart {
     thisCart.update();
   }
 
-  update(){
+  update() {
     const thisCart = this;
 
     thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
@@ -90,7 +90,7 @@ class Cart {
     }
   }
 
-  remove(cartProduct){
+  remove(cartProduct) {
     const thisCart = this;
 
     cartProduct.dom.wrapper.remove();
@@ -101,7 +101,7 @@ class Cart {
     thisCart.update();
   }
 
-  sendOrder(){
+  sendOrder() {
     const thisCart = this;
 
     const url = settings.db.url + '/' + settings.db.orders;
