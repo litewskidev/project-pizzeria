@@ -6,7 +6,15 @@ class Booking {
     const thisBooking = this;
 
     thisBooking.render(element);
+    thisBooking.getElements();
     thisBooking.initWidgets();
+  }
+
+  getElements(){
+    const thisBooking = this;
+
+    thisBooking.dom.peopleAmount = document.querySelector(select.booking.peopleAmount);
+    thisBooking.dom.hoursAmount = document.querySelector(select.booking.hoursAmount);
   }
 
   render(element) {
@@ -17,8 +25,7 @@ class Booking {
     thisBooking.dom.wrapper = element;
     element.innerHTML = generatedHTML;
 
-    thisBooking.dom.peopleAmount = element.querySelector(select.booking.peopleAmount);
-    thisBooking.dom.hoursAmount = element.querySelector(select.booking.hoursAmount);
+
   }
 
   initWidgets() {
