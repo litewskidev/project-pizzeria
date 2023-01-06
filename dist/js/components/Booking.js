@@ -24,8 +24,6 @@ class Booking {
     thisBooking.dom = {};
     thisBooking.dom.wrapper = element;
     element.innerHTML = generatedHTML;
-
-
   }
 
   initWidgets() {
