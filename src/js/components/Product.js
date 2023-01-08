@@ -93,35 +93,35 @@ class Product {
     let price = thisProduct.data.price;
 
     /* [DONE] for every category (param)... */
-    for(let paramId in thisProduct.data.params) {
+    for(let paramId in thisProduct.data.params){
       /* [DONE] determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... } */
       const param = thisProduct.data.params[paramId];
 
       /* [DONE] for every option in this category */
-      for(let optionId in param.options) {
+      for(let optionId in param.options){
         /* [DONE] determine option value */
         const option = param.options[optionId];
         /* [DONE] determine optionSelect value */
         const optionSelect = formData[paramId] && formData[paramId].includes(optionId);
         /* [DONE] check if there is param with a name of paramId in formData and if it includes optionId (WITH optionSelect) */
-        if(optionSelect) {
+        if(optionSelect){
           /* [DONE] check if the option is not default */
-          if(!option.default) {
+          if(!option.default){
             /* [DONE] add option price to price variable */
             price += option.price;
           }
         }
         /* [DONE] check if the option is default */
-        else if(option.default) {
+        else if (option.default){
           /* [DONE] reduce price variable */
           price -= option.price;
         }
         /* [DONE] find img witch '.paramId-optionId' class */
         const image = thisProduct.dom.imageWrapper.querySelector('.' + paramId + '-' + optionId);
         /* [DONE] check if img is founded */
-        if (image) {
+        if(image){
           /* [DONE] check if option is selected & show or hide img */
-          if (optionSelect) {
+          if(optionSelect){
             image.classList.add(classNames.menuProduct.imageVisible);
           } else {
             image.classList.remove(classNames.menuProduct.imageVisible);
@@ -156,7 +156,7 @@ class Product {
     const params = {};
 
     /* [DONE] for every category (param)... */
-    for(let paramId in thisProduct.data.params) {
+    for(let paramId in thisProduct.data.params){
       /* [DONE] determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... } */
       const param = thisProduct.data.params[paramId];
       /* [DONE] create category param in params const eg. params = { ingredients: { name: 'Ingredients', options: {}}}  */
@@ -166,13 +166,13 @@ class Product {
       };
 
       /* [DONE] for every option in this category */
-      for(let optionId in param.options) {
+      for(let optionId in param.options){
         /* [DONE] determine option value */
         const option = param.options[optionId];
         /* [DONE] determine optionSelect value */
         const optionSelect = formData[paramId] && formData[paramId].includes(optionId);
         /* [DONE] check if there is param with a name of paramId in formData and if it includes optionId (WITH optionSelect) */
-        if(optionSelect) {
+        if(optionSelect){
           /* [DONE] option is selected! */
           params[paramId].options[optionId] = option.label;
         }

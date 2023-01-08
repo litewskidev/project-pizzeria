@@ -19,7 +19,7 @@ class BaseWidget {
 
     const newValue = thisWidget.parseValue(value);
 
-    if (newValue != thisWidget.correctValue && thisWidget.isValid(newValue)) {
+    if(newValue != thisWidget.correctValue && thisWidget.isValid(newValue)){
       thisWidget.correctValue = newValue;
       thisWidget.announce();
     }
@@ -50,7 +50,7 @@ class BaseWidget {
   announce(){
     const thisWidget = this;
 
-    const event = new CustomEvent ('updated', {
+    const event = new CustomEvent('updated', {
       bubbles: true
     });
 

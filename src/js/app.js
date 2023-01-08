@@ -4,7 +4,7 @@ import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
 
 const app = {
-  initPages: function() {
+  initPages: function(){
     const thisApp = this;
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
@@ -14,8 +14,8 @@ const app = {
 
     let pageMatchingHash = thisApp.pages[0].id;
 
-    for (let page of thisApp.pages) {
-      if (page.id == idFromHash){
+    for(let page of thisApp.pages){
+      if(page.id == idFromHash){
         pageMatchingHash = page.id;
         break;
       }
@@ -23,7 +23,7 @@ const app = {
 
     thisApp.activatePage(pageMatchingHash);
 
-    for (let link of thisApp.navLinks) {
+    for(let link of thisApp.navLinks){
       link.addEventListener('click', function(event){
         const clickedElement = this;
         event.preventDefault();
@@ -40,11 +40,11 @@ const app = {
     }
   },
 
-  activatePage: function(pageId) {
+  activatePage: function(pageId){
     const thisApp = this;
 
     /* [DONE] add class 'active' to matching pages, remove from non-matching */
-    for (let page of thisApp.pages) {
+    for(let page of thisApp.pages){
     //  if(page.id == pageId){
     //    page.classList.add(classNames.pages.active);
     //  } else {
@@ -57,7 +57,7 @@ const app = {
     }
 
     /* [DONE] add class 'active' to matching links, remove from non-matching */
-    for (let link of thisApp.navLinks){
+    for(let link of thisApp.navLinks){
       link.classList.toggle(
         classNames.nav.active,
         link.getAttribute('href') == '#' + pageId
@@ -65,18 +65,18 @@ const app = {
     }
   },
 
-  initMenu: function() {
+  initMenu: function(){
     const thisApp = this;
 
     for(let productData in thisApp.data.products){
-      new Product (
+      new Product(
         thisApp.data.products[productData].id,
         thisApp.data.products[productData]
       );
     }
   },
 
-  initData: function() {
+  initData: function(){
     const thisApp = this;
 
     thisApp.data = {};
@@ -94,7 +94,7 @@ const app = {
       });
   },
 
-  initCart: function() {
+  initCart: function(){
     const thisApp = this;
 
     const cartElem = document.querySelector(select.containerOf.cart);
@@ -107,7 +107,7 @@ const app = {
     });
   },
 
-  initBooking: function() {
+  initBooking: function(){
     const thisApp = this;
     const bookingContainer = document.querySelector(select.containerOf.booking);
     thisApp.booking = new Booking(bookingContainer);
