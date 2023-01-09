@@ -11,7 +11,6 @@ class Booking{
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
-    thisBooking.tableSelected;
   }
 
   getData(){
@@ -155,6 +154,12 @@ class Booking{
     thisBooking.dom.hourPicker = element.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = element.querySelectorAll(select.booking.tables);
     thisBooking.dom.allTables = element.querySelector(select.booking.allTables);
+    thisBooking.dom.submit = element.querySelector(select.booking.formSubmit);
+    thisBooking.dom.phone = element.querySelector(select.booking.phone);
+    thisBooking.dom.address = element.querySelector(select.booking.address);
+    thisBooking.dom.starters = element.querySelectorAll(select.booking.starters);
+
+    thisBooking.tableSelected;
   }
 
   initTables(event){
@@ -183,6 +188,42 @@ class Booking{
         }
       }
     }
+  }
+
+  sendBooking(){
+    const thisBooking = this;
+
+    const url = settings.db.url + '/' + settings.db.bookings;
+
+    const payload = {
+      date: thisBooking.datePicker.value,
+      hour: thisBooking.hourPicker.value,
+      table: parseInt(thisBooking.tableSelected),
+      duration: parseInt(thisBooking.hoursAmount.value),
+      ppl: parseInt(thisBooking.peopleAmount.value),
+      starters: [],
+      phone: thisBooking.dom.phone.value,
+      address: thisBooking.dom.address.value,
+    };
+
+    //  STARTERS
+    for(let starter of thisBooking.dom.starters){
+      if(starter.checked){
+        payload.starters.push(starter.value);
+      }
+    }
+    console.log('payload:', payload);
+
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload)
+    };
+
+    fetch(url, options);
   }
 
   initWidgets(){
@@ -214,6 +255,11 @@ class Booking{
     thisBooking.dom.allTables.addEventListener('click', function(event){
       event.preventDefault();
       thisBooking.initTables(event);
+    });
+
+    thisBooking.dom.submit.addEventListener('click', function(event) {
+      event.preventDefault();
+      thisBooking.sendBooking();
     });
   }
 }
