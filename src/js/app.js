@@ -116,8 +116,23 @@ const app = {
 
   initHome: function(){
     const thisApp = this;
+
     const homeContainer = document.querySelector(select.containerOf.home);
     thisApp.home = new Home(homeContainer);
+
+    thisApp.pageLinks = document.querySelectorAll(select.home.pageLinks);
+
+    for (let pageLink of thisApp.pageLinks){
+      pageLink.addEventListener('click', function(event){
+        event.preventDefault();
+
+        const clickedElement = this;
+        const pageLinkId = clickedElement.getAttribute('href').replace('#', '');
+
+        thisApp.activatePage(pageLinkId);
+        window.location.hash = '#/' + pageLinkId;
+      });
+    }
   },
 
   init: function(){

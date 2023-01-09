@@ -81,6 +81,10 @@ export const select = {
     edit: '[href="#edit"]',
     remove: '[href="#remove"]',
   },
+
+  home: {
+    pageLinks: '.home-btn',
+  }
 };
 
 export const classNames = {
