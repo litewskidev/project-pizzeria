@@ -5,3 +5,72 @@
   border-bottom: 1px solid lighten($color-dark, 70%);
   border-radius: $radius;
 }
+
+.home__head, .home__carousel {
+  padding-bottom: 110px;
+}
+
+.home__header, .home__carousel, .home__gallery {
+  display: flex;
+}
+
+.order, .book {
+  position: relative;
+  text-align: center;
+  color: white;
+
+  h1 {
+    position: absolute;
+    top: 50%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+}
+
+.home__header img {
+  width: 300px;
+  height: 120px;
+  margin: 3px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.opening {
+  h1 {
+    padding-top: 25px;
+  }
+
+  h1, h3 {
+    margin: 0;
+    color: white;
+  }
+
+  background-color: $color-main;
+  width: 606px;
+  height: 120px;
+  border-radius: 5px;
+  margin-left: 2px;
+  text-align: center;
+}
+
+.home__carousel img {
+  width: 183px;
+  height: 183px;
+  margin-right: 20px;
+  margin-left: 2px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.gallery {
+  text-align: center;
+}
+
+.gallery img {
+  width: 193px;
+  height: 193px;
+  margin: 3px;
+  object-fit: cover;
+  border-radius: 5px;
+}
