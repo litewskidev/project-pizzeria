@@ -10,6 +10,7 @@ class DatePicker extends BaseWidget{
     thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.datePicker.input);
     thisWidget.initPlugin();
   }
+
   initPlugin(){
     const thisWidget = this;
 
@@ -33,6 +34,7 @@ class DatePicker extends BaseWidget{
       },
     });
   }
+  
   parseValue(value){
     return value;
   }
@@ -42,7 +44,7 @@ class DatePicker extends BaseWidget{
   }
 
   renderValue(){
-    
+
   }
 }
 
