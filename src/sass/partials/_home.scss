@@ -15,6 +15,7 @@
 .home__head {
   padding-bottom: 110px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 h1, h3 {
@@ -25,13 +26,15 @@ h1, h3 {
 
 .home__header {
   flex-wrap: wrap;
+  justify-content: center;
+
   img {
-  width: 295px;
-  height: 120px;
-  margin: 3px;
-  object-fit: cover;
-  border-radius: 5px;
-}
+    width: 295px;
+    height: 120px;
+    margin: 3px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
 }
 
 .order, .book {
@@ -101,28 +104,24 @@ h1, h3 {
 .gallery {
   padding-top: 110px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .image-1 {
   background-image: url(../images/home/pizza-4.jpg);
 }
-
 .image-2 {
   background-image: url(../images/home/pizza-5.jpg);
 }
-
 .image-3 {
   background-image: url(../images/home/pizza-6.jpg);
 }
-
 .image-4 {
   background-image: url(../images/home/pizza-7.jpg);
 }
-
 .image-5 {
   background-image: url(../images/home/pizza-8.jpg);
 }
-
 .image-6 {
   background-image: url(../images/home/pizza-9.jpg);
 }
@@ -130,8 +129,8 @@ h1, h3 {
 .gallery-image {
   position: relative;
   transition: transform 2s;
-  width: 32%;
-  height: 200px;
+  width: 193px;
+  height: 193px;
   margin: 4px;
   border-radius: 5px;
   background-position: center center;
