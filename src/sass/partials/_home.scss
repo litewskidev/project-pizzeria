@@ -6,7 +6,7 @@
   border-radius: $radius;
 }
 
-.home__header, .carousel-cell, .home__gallery {
+.home__header, .carousel-cell, .gallery {
   display: flex;
 }
 
@@ -17,9 +17,9 @@
 }
 
 h1, h3 {
-    font-family: $font-header;
-    font-weight: $font-semibold;
-    font-size: 25px;
+  font-family: $font-header;
+  font-weight: $font-semibold;
+  font-size: 25px;
 }
 
 .home__header img {
@@ -96,15 +96,77 @@ h1, h3 {
 //  GALLERY
 .gallery {
   padding-top: 80px;
-  text-align: center;
+  flex-wrap: wrap;
 }
 
-.gallery img {
-  width: 193px;
-  height: 193px;
-  margin: 3px;
-  object-fit: cover;
+.image-1 {
+  background-image: url(../images/home/pizza-4.jpg);
+}
+
+.image-2 {
+  background-image: url(../images/home/pizza-5.jpg);
+}
+
+.image-3 {
+  background-image: url(../images/home/pizza-6.jpg);
+}
+
+.image-4 {
+  background-image: url(../images/home/pizza-7.jpg);
+}
+
+.image-5 {
+  background-image: url(../images/home/pizza-8.jpg);
+}
+
+.image-6 {
+  background-image: url(../images/home/pizza-9.jpg);
+}
+
+.gallery-image {
+  position: relative;
+  transition: transform 2s;
+  width: 32%;
+  height: 200px;
+  margin: 4px;
   border-radius: 5px;
+  background-position: center center;
+  background-size: cover;
+}
+
+.gallery-image:hover::before {
+  position: absolute;
+  content: "";
+  background-color: rgb(128, 128, 128);
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  border-radius: 5px;
+}
+
+.gallery-image:hover i {
+  visibility: visible;
+  color: $color-main;
+  transform: scale(1);
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.icons i {
+  font-size: 30px;
+  visibility: hidden;
+  margin: 3px;
+  transform: scale(0.1);
+  transition: 0.5s;
+}
+
+.icons a:hover i {
+  color: rgb(224, 60, 60);
 }
 
 
