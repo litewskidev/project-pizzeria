@@ -73,11 +73,9 @@
 
   }
 
-  &__product { // CODE CHANGED
-    width: 170px; // CODE CHANGED
+  &__product {
+    width: 170px;
   }
-
-  // CODE ADDED START
 
   &__product-header {
     @include flex(row, center, space-between);
@@ -108,8 +106,6 @@
     }
 
   }
-
-  // CODE ADDED END
 
   &__action-buttons {
     @include flex(row, center, space-between);
