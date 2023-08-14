@@ -282,15 +282,16 @@ app.get('/events', (req, res) => {
 //  ORDERS
 app.post('/orders', (req, res) => {
   ordersList.push(req.body);
-  res.status(200).end();
+  res.json(ordersList);
 });
 app.get('/orders', (req, res) => {
   res.json(ordersList);
 });
+
 //  BOOKINGS
 app.post('/bookings', (req, res) => {
   bookingList.push(req.body);
-  res.status(200).end();
+  res.json(bookingList);
 });
 app.get('/bookings', (req, res) => {
   res.json(bookingList);
