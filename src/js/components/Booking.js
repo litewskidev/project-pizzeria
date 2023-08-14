@@ -262,7 +262,7 @@ class Booking{
       .then(function(response){
         return response.json();
       }).then(function(parsedResponse){
-        console.log('Response:', parsedResponse);
+        console.log('Booking:', parsedResponse);
         thisBooking.makeBooked(payload.date, payload.hour, payload.duration, payload.table);
       });
   }

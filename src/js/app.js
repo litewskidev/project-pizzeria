@@ -29,13 +29,10 @@ const app = {
         const clickedElement = this;
         event.preventDefault();
 
-        /* [DONE] get page id from href attribute */
         const id = clickedElement.getAttribute('href').replace('#', '');
 
-        /* [DONE] run thisApp.activatePage with that id */
         thisApp.activatePage(id);
 
-        /* [DONE] change URL hash */
         window.location.hash = '#/' + id;
       });
     }
@@ -44,20 +41,13 @@ const app = {
   activatePage: function(pageId){
     const thisApp = this;
 
-    /* [DONE] add class 'active' to matching pages, remove from non-matching */
     for(let page of thisApp.pages){
-    //  if(page.id == pageId){
-    //    page.classList.add(classNames.pages.active);
-    //  } else {
-    //    page.classList.remove(classNames.pages.active);
-    //  }
       page.classList.toggle(
         classNames.pages.active,
         page.id == pageId
       );
     }
 
-    /* [DONE] add class 'active' to matching links, remove from non-matching */
     for(let link of thisApp.navLinks){
       link.classList.toggle(
         classNames.nav.active,
@@ -88,9 +78,7 @@ const app = {
         return rawResponse.json();
       })
       .then(function(parsedResponse){
-        /* [DONE] save parsedResponse as thisApp.data.products */
         thisApp.data.products = parsedResponse;
-        /* [DONE] execute initMenu method */
         thisApp.initMenu();
       });
   },
