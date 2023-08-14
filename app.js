@@ -281,8 +281,9 @@ app.get('/events', (req, res) => {
 
 //  ORDERS
 app.post('/orders', (req, res) => {
-  ordersList.push(req.body);
-  res.json(ordersList);
+  ordersList.push(req.body)
+    .then(res.json(req.body)
+      .catch(err => console.log(err)));
 });
 app.get('/orders', (req, res) => {
   res.json(ordersList);
@@ -290,8 +291,9 @@ app.get('/orders', (req, res) => {
 
 //  BOOKINGS
 app.post('/bookings', (req, res) => {
-  bookingList.push(req.body);
-  res.json(bookingList);
+  bookingList.push(req.body)
+    .then(res.json(req.body)
+      .catch(err => console.log(err)));
 });
 app.get('/bookings', (req, res) => {
   res.json(bookingList);
