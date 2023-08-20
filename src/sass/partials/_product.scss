@@ -130,6 +130,7 @@
 
     &__images {
       z-index: -1;
+      
       > img {
         @include centerMobile();
         height: 50%;
