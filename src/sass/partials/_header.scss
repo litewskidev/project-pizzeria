@@ -56,5 +56,22 @@
     }
 
   }
+}
 
+@media(max-width: 540px) {
+
+  .header {
+    padding: ($base-size * 8) 0 ($base-size * 8) 0;
+  }
+
+  .main-nav a:last-of-type {
+    margin-right: 0;
+  }
+}
+
+@media(max-width: 281px) {
+  .main-nav a {
+    margin-right: 15px;
+    padding: 10px;
+  }
 }

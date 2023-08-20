@@ -88,9 +88,7 @@
       &.active {
         opacity: 1;
       }
-
     }
-
   }
 
   &.active {
@@ -118,5 +116,46 @@
     margin: 0 ($base-size / 2);
     padding: 0;
   }
+}
 
+@media (max-width: 540px) {
+  .product {
+    margin: ($base-size / 2) 0;
+    padding: ($base-size * 6) ($base-size * 2);
+
+    &__icon {
+      right: (-$base-size * 4);
+      top: $base-size / 2;
+    }
+
+    &__images {
+      z-index: -1;
+      > img {
+        @include centerMobile();
+        height: 50%;
+      }
+    }
+
+    &__params {
+      margin: 0;
+    }
+
+    &__total-price {
+      font-size: 18px;
+    }
+  }
+
+  .widget-amount {
+    display: flex !important;
+    align-items: center;
+    gap: 5px;
+
+    h3 {
+      margin-right: 25px;
+    }
+
+    input {
+      margin: 5px 0;
+    }
+  }
 }

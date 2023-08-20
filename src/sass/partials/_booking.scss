@@ -49,12 +49,12 @@
 .hour-picker {
   position: relative;
   width: 50%;
+  margin-left: 10px;
 
   .output {
     position: absolute;
     right: 0;
   }
-
 }
 
 .rangeSlider {
@@ -215,4 +215,37 @@
 .booking-options {
   @include flex(row, flex-start, space-between);
   margin: ($base-size * 4) auto;
+}
+
+@media (max-width:540px) {
+  .booking-wrapper {
+    padding: ($base-size * 6) ($base-size * 1.5);
+  }
+
+  .widget-amount {
+    input {
+      margin: 0;
+    }
+  }
+}
+
+@media(max-width: 281px) {
+
+  .booking-wrapper {
+    padding: ($base-size * 6) ($base-size * 0.5);
+  }
+
+  .floor-plan {
+    position: relative;
+    width: 100%;
+    height: 320px;
+  }
+
+  .date-picker {
+    width: 45%;
+  }
+
+  .flatpickr-input {
+    width: 100%;
+  }
 }

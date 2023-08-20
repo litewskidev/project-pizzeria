@@ -153,3 +153,17 @@
   }
 
 }
+
+@media (max-width: 540px) {
+  .cart {
+    top: -80px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+@media(max-width: 281px) {
+  .cart {
+    width: 100%;
+  }
+}

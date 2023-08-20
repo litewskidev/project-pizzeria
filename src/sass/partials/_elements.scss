@@ -98,5 +98,15 @@ input, select {
     }
 
   }
+}
 
+@media (max-width: 540px) {
+  .btn-primary {
+    width: 200px !important;
+  }
+
+  .btn-quantity {
+    min-width: 30px !important;
+    height: 30px;
+  }
 }

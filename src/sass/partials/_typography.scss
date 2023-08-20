@@ -16,3 +16,9 @@
   font-weight: $font-bold;
   text-transform: uppercase;
 }
+
+@media (max-width: 540px) {
+  .h1 {
+    font-size: 20px;
+  }
+}

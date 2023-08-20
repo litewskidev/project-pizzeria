@@ -61,6 +61,12 @@ $base-size: 12px;
   transform: translate(-50%, -50%);
 }
 
+@mixin centerMobile() {
+  position: absolute;
+  left: 70%;
+  top: 20%;
+}
+
 @mixin accordion-closed() {
   position: relative;
   overflow: hidden;
@@ -71,7 +77,7 @@ $base-size: 12px;
 
 @mixin accordion-open() {
   transform: translate(0, 0);
-  max-height: 1000px;
+  max-height: 1200px;
   opacity: 1;
 }
 
