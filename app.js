@@ -30,7 +30,7 @@ app.get('/products', (req, res) => {
       {
          "id":"breakfast",
          "class":"small",
-         "name":"Zia Giulia's Breakfast",
+         "name":"Zia Giulia's Breakfast M",
          "price":9,
          "description":"There's no better way to start your day than indulging yourself with a cup of fresh Italian coffee and crispy waffels. Made just for you on the spot, this breakfast combo has been our guests' favorite for over 50 years.",
          "images":[
@@ -64,7 +64,7 @@ app.get('/products', (req, res) => {
       },
       {
          "id":"pizza",
-         "name":"Nonna Alba's Pizza",
+         "name":"Nonna Alba's Pizza Ma",
          "price":20,
          "description":"The true taste of Italy &ndash; homemade pizza as prepared by our grandmothers in old-fashoned brick ovens. Choose your favorite topping and enjoy your comfort food! All ingredients come straight from eco-friendly, trusted farms in the Italian countryside.",
          "images":[
@@ -221,6 +221,7 @@ app.get('/products', (req, res) => {
     ]
   );
 });
+
 //  EVENTS
 app.get('/events', (req, res) => {
   res.json(

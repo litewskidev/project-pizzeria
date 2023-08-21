@@ -10,8 +10,14 @@
 }
 
 .logo {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  gap: 16px;
   line-height: 1;
+
+  &__image {
+    width: 128px;
+  }
 
   &__title {
     margin: 0 0 $base-size 0;
